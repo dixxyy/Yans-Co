@@ -46,6 +46,3 @@ Homestead.yaml
 # ==========================================
 # Docker Local Cleanup (Otomatis Diabaikan Git)
 # ==========================================
-Dockerfile
-docker-compose.yml
-.docker/
