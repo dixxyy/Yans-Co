@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\OrderController;
 
 
 Route::get('/', [App\Http\Controllers\BerandaController::class, 'index'])->name('pages.beranda');
@@ -140,6 +141,8 @@ Route::get('/_debug/midtrans-config', function() {
     ]);
 });
 
+// Rute untuk cetak PDF Invoice
+Route::get('/beranda/orders/print/{id}', [OrderController::class, 'printPdf'])->name('orders.print');
 
 
 // Route::get('/cities/{provinceId}', [App\Http\Controllers\RajaOngkirController::class, 'getCities']);

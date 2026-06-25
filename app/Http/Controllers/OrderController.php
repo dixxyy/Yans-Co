@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Orders;
 use App\Models\Order_items;
 use App\Events\OrderStatusUpdated;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class OrderController extends Controller
 {
@@ -134,5 +135,19 @@ class OrderController extends Controller
         }
 
         return redirect()->route('pages.yourorders')->with('success', 'Pesanan telah dibatalkan.');
+    }
+
+    // Fungsi Cetak PDF Menggunakan Model Orders (Opsi B)
+    public function printPdf($id)
+    {
+        // 1. Panggil menggunakan 'Orders' (sesuai use App\Models\Orders)
+        // Catatan: Pastikan nama relasi 'items' atau 'orderItems' sudah sesuai dengan yang ada di model Orders Anda
+        $order = Orders::with('items.product')->findOrFail($id);
+
+        // 2. Load view invoice yang ada di folder resources/views/pages/
+        $pdf = PDF::loadView('pages.invoice_pdf', compact('order'));
+
+        // 3. Download otomatis file PDF-nya
+        return $pdf->download('invoice-' . $order->id . '.pdf');
     }
 }

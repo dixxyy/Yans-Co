@@ -157,6 +157,13 @@
                             </small>
                         </div>
                         <div class="col-auto d-flex gap-2">
+
+                            @if($order->payment_status == 'paid')
+                                <a href="{{ route('orders.print', $order->id) }}" class="btn btn-sm btn-danger d-inline-flex align-items-center">
+                                    📄 Cetak PDF
+                                </a>
+                            @endif
+                            
                             @if($order->payment_status == 'pending' && $order->status == 'pending')
                                 <a href="{{ route('payment.retry', $order->id) }}" class="btn btn-sm btn-warning">Lanjutkan Pembayaran</a>
 
