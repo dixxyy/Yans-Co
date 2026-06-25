@@ -31,8 +31,9 @@ COPY --from=frontend /app/public/build ./public/build
 RUN composer install \
     --no-dev \
     --optimize-autoloader \
-    --no-interaction
-
+    --no-interaction \
+    --no-scripts
+    
 EXPOSE 10000
 
 CMD php artisan serve --host=0.0.0.0 --port=${PORT:-10000}
