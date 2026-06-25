@@ -1,15 +1,17 @@
-# Frontend build
+# Build frontend assets
 FROM node:20-alpine AS frontend
 
 WORKDIR /app
 
 COPY package*.json ./
+
 RUN npm install
 
 COPY . .
+
 RUN npm run build
 
-# PHP runtime
+# PHP Runtime
 FROM php:8.2-cli
 
 RUN apt-get update && apt-get install -y \
@@ -26,7 +28,10 @@ COPY . .
 
 COPY --from=frontend /app/public/build ./public/build
 
-RUN composer install --no-dev --optimize-autoloader
+RUN composer install \
+    --no-dev \
+    --optimize-autoloader \
+    --no-interaction
 
 EXPOSE 10000
 
