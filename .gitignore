@@ -1,0 +1,51 @@
+# OS & editor files
+.DS_Store
+Thumbs.db
+/.idea
+/.vscode
+/.fleet
+
+# Environment
+.env
+.env.*
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Laravel / PHP
+/vendor/
+/bootstrap/cache/
+/storage/framework/
+/storage/logs/
+.phpunit.result.cache
+.phpactor.json
+
+# Node
+/node_modules/
+/public/hot
+/public/build
+
+# Public storage symlink (when used)
+/public/storage
+
+# Database
+*.sqlite
+*.sqlite3
+
+# Misc large or generated
+/supabase/
+/storage/pail
+
+# Homestead
+Homestead.json
+Homestead.yaml
+
+# ==========================================
+# Docker Local Cleanup (Otomatis Diabaikan Git)
+# ==========================================
+Dockerfile
+docker-compose.yml
+.docker/
